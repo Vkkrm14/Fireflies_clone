@@ -1,0 +1,71 @@
+.triggerLabel {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.content {
+  z-index: 60;
+  min-width: 190px;
+  padding: var(--space-1);
+  background: var(--surface-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: pop 0.14s var(--ease);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px 8px 30px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.item[data-highlighted] {
+  background: var(--bg-strong);
+  color: var(--text-strong);
+}
+
+.indicator {
+  position: absolute;
+  left: 9px;
+  display: inline-flex;
+  color: var(--text-brand);
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.actionItem[data-highlighted] {
+  background: var(--bg-strong);
+  color: var(--text-strong);
+}
+
+.actionItem[data-danger="true"] {
+  color: var(--danger);
+}
+
+.separator {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--border);
+}

@@ -1,0 +1,25 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.neutral { background: var(--gray-100); color: var(--gray-800); }
+.brand { background: var(--primary-50); color: var(--primary-700); }
+.success { background: var(--success-soft); color: #047857; }
+.warning { background: var(--warning-soft); color: #92400e; }
+.danger { background: var(--danger-soft); color: #b91c1c; }
+.info { background: var(--info-soft); color: #1d4ed8; }

@@ -1,0 +1,33 @@
+.container {
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+
+.narrow { max-width: 760px; }
+.default { max-width: 1120px; }
+.wide { max-width: 1440px; }
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+
+.description {
+  max-width: 60ch;
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex: none;
+  gap: var(--space-3);
+}

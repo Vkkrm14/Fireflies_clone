@@ -1,0 +1,72 @@
+.root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.root[data-chrome="notebook"] {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.promo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: var(--promo-h);
+  padding: 0 40px;
+  font-size: var(--fs-base);
+  color: var(--text-strong);
+  background: var(--promo-bg);
+}
+
+.promo a {
+  color: var(--text-brand-hover);
+}
+
+.promo a:hover {
+  text-decoration: underline;
+}
+
+.promo button {
+  position: absolute;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.shell {
+  flex: 1;
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: calc(100dvh - var(--promo-h));
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bare {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}

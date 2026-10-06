@@ -1,0 +1,45 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px var(--space-6);
+  text-align: center;
+}
+
+.art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.art svg {
+  grid-area: 1 / 1;
+}
+
+.icon {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-primary);
+  color: var(--primary-600);
+  box-shadow: var(--shadow-md);
+}
+
+.title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.description {
+  max-width: 44ch;
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+}
+
+.action {
+  margin-top: var(--space-6);
+}
