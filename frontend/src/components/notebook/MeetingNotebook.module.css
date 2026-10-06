@@ -1,0 +1,242 @@
+.root {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-page);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 56px;
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.iconBtn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.iconBtn:hover {
+  background: var(--bg-strong);
+  color: var(--text-strong);
+}
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--text);
+}
+
+.crumbs a:hover {
+  text-decoration: underline;
+}
+
+.crumbs span {
+  color: var(--text-hint);
+}
+
+.crumbs .crumbCurrent {
+  color: var(--text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 40ch;
+}
+
+.grow {
+  flex: 1;
+}
+
+.upgrade {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  font-family: var(--font-label);
+  font-size: var(--fs-sm);
+  color: #5ed08a;
+  background: #12301f;
+  border: 1px solid #1d4a2f;
+  border-radius: var(--radius-xs);
+}
+
+.share {
+  display: inline-flex;
+}
+
+.share button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  color: #fff;
+  font-weight: 500;
+  background: var(--brand);
+  border: 0;
+}
+
+.share button:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.share button:last-child {
+  padding: 0 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.share button:hover:not(:disabled) {
+  background: var(--brand-hover);
+}
+
+.share button:disabled {
+  opacity: 0.5;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(340px, 430px);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.body[data-panel] {
+  grid-template-columns: 48px 340px minmax(0, 1fr) minmax(340px, 430px);
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding-top: 12px;
+  border-right: 1px solid var(--border);
+}
+
+.rail button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.rail button:hover,
+.rail button[aria-pressed="true"] {
+  color: var(--text-strong);
+  background: var(--bg-strong);
+}
+
+.left,
+.center,
+.right {
+  min-width: 0;
+  min-height: 0;
+}
+
+.left {
+  border-right: 1px solid var(--border);
+}
+
+.state {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 640px;
+  margin: var(--space-8) auto;
+  width: 100%;
+  padding: 0 var(--space-4);
+}
+
+@media (max-width: 1180px) {
+  .body {
+    position: relative;
+  }
+
+  .body[data-panel] {
+    grid-template-columns: 48px minmax(0, 1fr) minmax(320px, 400px);
+  }
+
+  /* Below 1181px the side panel floats over the notes instead of taking a column */
+  .left {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 48px;
+    width: min(340px, calc(100% - 48px));
+    background: var(--bg-page);
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (max-width: 900px) {
+  .body,
+  .body[data-panel] {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .rail {
+    flex-direction: row;
+    justify-content: center;
+    padding: 6px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .left {
+    left: 0;
+    top: 47px;
+    width: min(340px, 100%);
+  }
+
+  .center {
+    flex: none;
+  }
+
+  .right {
+    flex: none;
+    height: 80dvh;
+    border-top: 1px solid var(--border);
+  }
+
+  .topbar {
+    gap: var(--space-2);
+    padding: 0 var(--space-3);
+  }
+
+  .upgrade,
+  .crumbs > span:nth-of-type(1) {
+    display: none;
+  }
+
+  .crumbs .crumbCurrent {
+    max-width: 16ch;
+  }
+}

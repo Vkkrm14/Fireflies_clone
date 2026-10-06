@@ -1,0 +1,116 @@
+.bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--player-h);
+  padding: 8px var(--space-4) 0;
+  background: var(--bg-page);
+  border-top: 1px solid var(--border);
+}
+
+.time {
+  white-space: nowrap;
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+}
+
+.time span {
+  color: var(--text-strong);
+}
+
+.controls,
+.reactions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.reactions {
+  justify-content: flex-end;
+}
+
+.controls button,
+.reactions button {
+  display: grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.controls button:hover:not(:disabled),
+.reactions button:hover {
+  color: var(--text-strong);
+  background: var(--bg-strong);
+}
+
+.rate {
+  font-size: var(--fs-base);
+}
+
+.controls .play {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background: var(--brand);
+  border-radius: 50%;
+}
+
+.controls .play:hover:not(:disabled) {
+  background: var(--brand-hover);
+  color: #fff;
+}
+
+.controls .play:disabled {
+  background: var(--bg-strong);
+  color: var(--text-hint);
+  cursor: not-allowed;
+}
+
+.seek {
+  position: absolute;
+  top: -7px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 14px;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.seek::-webkit-slider-runnable-track {
+  height: 3px;
+  background: linear-gradient(to right, var(--brand-light) var(--pct), var(--bg-strong) var(--pct));
+}
+
+.seek::-moz-range-track {
+  height: 3px;
+  background: var(--bg-strong);
+}
+
+.seek::-moz-range-progress {
+  height: 3px;
+  background: var(--brand-light);
+}
+
+.seek::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -4.5px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.seek:hover::-webkit-slider-thumb,
+.seek:focus-visible::-webkit-slider-thumb {
+  opacity: 1;
+}

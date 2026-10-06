@@ -1,0 +1,122 @@
+.panel {
+  width: var(--channels-w);
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-page);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 10px;
+  color: var(--text-hint);
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  color: var(--text-strong);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 10px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+}
+
+.item:hover {
+  background: var(--bg-card);
+  color: var(--text-strong);
+}
+
+.item[aria-current="page"] {
+  color: var(--text-strong);
+  background: var(--bg-brand-tint);
+}
+
+.item[aria-current="page"] svg {
+  color: var(--text-brand-hover);
+}
+
+.new {
+  margin-left: 4px;
+  padding: 0 6px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  color: #5ed08a;
+  background: #12301f;
+  border-radius: 4px;
+}
+
+.all {
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.allHeader {
+  padding: 0 10px;
+  font-size: var(--fs-base);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.empty svg {
+  color: #d85fa8;
+}
+
+.empty button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.empty button:hover {
+  background: var(--bg-strong);
+}
+
+@media (max-width: 900px) {
+  .panel {
+    display: none;
+  }
+}

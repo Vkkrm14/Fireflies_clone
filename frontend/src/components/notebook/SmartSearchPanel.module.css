@@ -1,0 +1,131 @@
+.panel {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-page);
+}
+
+.heading {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  color: var(--text-strong);
+  border-bottom: 1px solid var(--border);
+}
+
+.section {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.section header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.filters button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  color: var(--text);
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.filters button:hover:not(:disabled) {
+  background: var(--bg-card);
+}
+
+.filters button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.filters i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.filters b {
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.speakers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.speakerHead,
+.speaker {
+  display: grid;
+  grid-template-columns: 1fr 64px 76px;
+  align-items: center;
+  gap: 8px;
+}
+
+.speakerHead {
+  font-size: 11px;
+  color: var(--text-hint);
+}
+
+.speaker {
+  min-height: 44px;
+  padding: 0 12px;
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text-strong);
+}
+
+.wpm {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.wpm i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f97066;
+}
+
+.share {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}

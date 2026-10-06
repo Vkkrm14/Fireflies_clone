@@ -1,0 +1,275 @@
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  background: var(--bg-page);
+  border-left: 1px solid var(--border);
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.tabs [role="tab"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 46px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs [role="tab"][aria-selected="true"] {
+  color: var(--text-brand-hover);
+  border-bottom-color: var(--text-brand);
+}
+
+.tabs [role="tab"]:first-child svg {
+  color: var(--text-brand);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.icon[aria-pressed="true"] {
+  color: var(--text-brand-hover);
+}
+
+.icon:hover {
+  background: var(--bg-strong);
+}
+
+.find {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  margin: var(--space-3) var(--space-4) 0;
+  padding: 0 6px 0 12px;
+  color: var(--text-hint);
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.find:focus-within {
+  border-color: var(--brand-light);
+}
+
+.find input {
+  flex: 1;
+  min-width: 0;
+  color: var(--text-strong);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.counter {
+  font-size: var(--fs-xs);
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.find button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-xs);
+}
+
+.find button:hover:not(:disabled) {
+  background: var(--bg-strong);
+}
+
+.find button:disabled {
+  opacity: 0.4;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-3) var(--space-4) var(--space-8);
+}
+
+.block {
+  margin-bottom: 4px;
+  padding: 10px 12px;
+  border-left: 3px solid transparent;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.block header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: var(--fs-base);
+}
+
+.speaker {
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+.dot {
+  color: var(--text-hint);
+}
+
+.time {
+  padding: 0;
+  font-size: var(--fs-base);
+  color: var(--link);
+  text-decoration: underline;
+  background: transparent;
+  border: 0;
+}
+
+.block p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.block:hover {
+  background: var(--bg-layer);
+}
+
+.block[data-active] {
+  background: var(--bg-brand-tint);
+  border-left-color: var(--brand-light);
+}
+
+.block[data-current] {
+  outline: 1px solid var(--brand-light);
+}
+
+.empty {
+  margin-top: var(--space-8);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.tools {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: 6px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.block:hover .tools,
+.block:focus-within .tools {
+  opacity: 1;
+}
+
+.tools button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+}
+
+.tools button:hover {
+  color: var(--text-strong);
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  font-size: var(--fs-sm);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+}
+
+.comment b {
+  margin-right: 6px;
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+.comment button {
+  flex: none;
+  padding: 2px;
+  color: var(--text-hint);
+  background: transparent;
+  border: 0;
+}
+
+.comment button:hover {
+  color: var(--danger);
+}
+
+.composer {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  color: var(--text-strong);
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: 0;
+}
+
+.composer input:focus {
+  border-color: var(--brand-light);
+}
+
+.composer button {
+  padding: 0 12px;
+  color: #fff;
+  background: var(--brand);
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.composer button:disabled {
+  background: var(--bg-brand-tint-2);
+  color: var(--text-hint);
+}
+
+.comment p {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
