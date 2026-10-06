@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { CalendarClock, ListChecks, Rss, Sparkles, Users, Video } from "lucide-react";
 import { AvatarStack } from "@/components/ui/Avatar";
@@ -13,6 +13,13 @@ import { useUser } from "@/lib/hooks/useUser";
 import { notebookHref, ROUTES } from "@/lib/routes";
 import styles from "./home.module.css";
 
+const noSubscription = () => () => undefined;
+
+/** The greeting depends on the viewer's local hour, which the server cannot know; render a neutral one until hydrated. */
+function useGreeting(): string {
+  return useSyncExternalStore(noSubscription, () => greeting(), () => "Hello");
+}
+
 type Tab = "recent" | "upcoming" | "feed";
 
 const TABS: { id: Tab; label: string }[] = [
@@ -23,6 +30,7 @@ const TABS: { id: Tab; label: string }[] = [
 
 export default function HomePage() {
   const { data: user } = useUser();
+  const hello = useGreeting();
   const { data, error, isLoading, mutate: reload } = useMeetings({ sort: "newest", page_size: 100 });
   const [tab, setTab] = useState<Tab>("recent");
   const meetings = data?.meetings ?? [];
@@ -36,7 +44,7 @@ export default function HomePage() {
       <div className={styles.hero} aria-hidden />
       <div className={styles.inner}>
         <h2 className={styles.greeting}>
-          {greeting()}
+          {hello}
           {firstName ? `, ${firstName}` : ""}
         </h2>
 
