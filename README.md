@@ -1,8 +1,20 @@
 # Fireflies.ai Clone
 
-A working clone of the Fireflies.ai meeting-assistant web app: a meetings library, an interactive transcript synced to a media player, AI-style summaries and action items, search, and meeting management. Real speech-to-text and live-call bots are out of scope, so meetings come from seeded data or from a transcript you paste or upload.
+A full-stack clone of the [Fireflies.ai](https://fireflies.ai) meeting-assistant workspace. Browse a library of past meetings, open one to read an interactive transcript that stays in sync with a media player, and review the AI-style summary, chapters and action items alongside it. Meetings can be created from a pasted or uploaded transcript, edited, searched, tagged, commented on and exported.
 
-**Live demo:** _add the deployed URL here after deploying (see [Deployment](#deployment))._
+Speech-to-text and live-call bots are out of scope, so meetings come from seeded data or from a `.txt`, `.vtt` or `.json` transcript you provide. The UI follows the real app's layout, routes and dark theme.
+
+**Live demo:** https://fireflies-clone-beryl.vercel.app
+
+> The API runs on a free Render instance that sleeps when idle, so the first load can take up to a minute. Data created in the demo is reset when the instance restarts.
+
+### Highlights
+
+- **Meetings library:** search by title, filter by date, participant and tag, sort by recency or length.
+- **Interactive transcript:** click a line to seek the player, and the transcript highlights and scrolls as the audio plays. Find-in-transcript with next and previous.
+- **Summary and notes:** overview, key topics, chapters that jump to their timestamp, and editable action items.
+- **Meeting management:** create, rename, edit participants and date, delete; everything persists in SQLite.
+- **Bonus:** global search grouped by meeting, comments and soundbites, tags, export to txt, md or json, extractive "ask about this meeting", and keyboard shortcuts.
 
 ## Tech stack
 
