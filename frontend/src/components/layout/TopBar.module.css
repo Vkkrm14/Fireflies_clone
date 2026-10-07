@@ -90,14 +90,14 @@
   padding: 0 12px;
   font-family: var(--font-label);
   font-size: var(--fs-sm);
-  color: #5ed08a;
-  background: #12301f;
-  border: 1px solid #1d4a2f;
+  color: var(--mint-fg);
+  background: var(--mint-bg);
+  border: 1px solid var(--mint-border);
   border-radius: var(--radius-xs);
 }
 
 .upgrade:hover {
-  background: #17402a;
+  background: var(--mint-hover);
 }
 
 .bell {

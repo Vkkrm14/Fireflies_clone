@@ -67,8 +67,8 @@
   font-size: 10px;
   font-style: normal;
   font-weight: 600;
-  color: #5ed08a;
-  background: #12301f;
+  color: var(--mint-fg);
+  background: var(--mint-bg);
   border-radius: 4px;
 }
 

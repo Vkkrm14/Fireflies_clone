@@ -48,6 +48,13 @@
   display: grid;
   grid-template-columns: var(--rail-w) minmax(0, 1fr);
   min-height: 0;
+  transition: grid-template-columns 0.18s var(--ease);
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
 }
 
 .column {

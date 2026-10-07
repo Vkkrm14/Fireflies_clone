@@ -7,7 +7,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 190px;
-  background: linear-gradient(to bottom, #20232a 0%, rgba(19, 19, 20, 0) 100%);
+  background: var(--hero-bg);
   pointer-events: none;
 }
 
@@ -65,8 +65,8 @@
   padding: 0 6px;
   font-size: 10px;
   font-weight: 600;
-  color: #5ed08a;
-  background: #12301f;
+  color: var(--mint-fg);
+  background: var(--mint-bg);
   border-radius: 4px;
 }
 

@@ -1,0 +1,84 @@
+.card {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.lead {
+  flex: none;
+  margin-top: 2px;
+  color: var(--text-hint);
+}
+
+.body {
+  min-width: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  color: var(--text-strong);
+}
+
+.help {
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 124px;
+  height: 100px;
+  color: var(--text-strong);
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+}
+
+.option svg {
+  color: var(--text-muted);
+}
+
+.option:hover {
+  background: var(--bg-card);
+}
+
+.option[aria-checked="true"] {
+  color: var(--text-brand-hover);
+  background: var(--bg-brand-tint);
+  border-color: var(--primary-500);
+}
+
+.option[aria-checked="true"] svg {
+  color: var(--text-brand);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-4);
+  }
+
+  .option {
+    width: calc(33.333% - 8px);
+    min-width: 88px;
+  }
+}

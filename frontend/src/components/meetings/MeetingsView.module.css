@@ -239,7 +239,7 @@
   padding: var(--space-6);
   color: var(--text-muted);
   background: var(--bg-brand-tint);
-  border: 1px dashed #4a43a0;
+  border: 1px dashed var(--dashed-border);
   border-radius: var(--radius-lg);
 }
 

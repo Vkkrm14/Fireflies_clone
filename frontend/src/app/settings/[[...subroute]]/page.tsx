@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Search } from "lucide-react";
 import { Avatar } from "@/components/ui/Avatar";
+import { ThemePicker } from "@/components/settings/ThemePicker";
 import { useToast } from "@/components/ui/Toast";
 import { useUser } from "@/lib/hooks/useUser";
 import { ROUTES, SETTINGS_SECTIONS } from "@/lib/routes";
@@ -93,7 +94,9 @@ export default function SettingsPage() {
         </label>
 
         <h2>{section?.label ?? "Settings"}</h2>
-        {slug === "meeting-recording" ? (
+        {slug === "language-appearance" ? (
+          <ThemePicker />
+        ) : slug === "meeting-recording" ? (
           <div className={styles.card}>
             {RECORDING.map((row) => (
               <Toggle key={row.id} row={row} />

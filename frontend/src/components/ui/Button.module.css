@@ -40,7 +40,7 @@
 .ghost:hover:not(:disabled) { background: var(--surface-hover); color: var(--text); }
 
 .danger { background: var(--danger); color: #fff; }
-.danger:hover:not(:disabled) { background: #dc2626; }
+.danger:hover:not(:disabled) { background: color-mix(in srgb, var(--danger) 86%, black); }
 
 .button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 

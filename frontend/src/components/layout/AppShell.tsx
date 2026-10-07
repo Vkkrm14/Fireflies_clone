@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { CreateMeetingModal } from "@/components/meetings/CreateMeetingModal";
 import { chromeForPath, titleForPath } from "@/lib/routes";
+import { useSystemThemeSync } from "@/lib/hooks/useTheme";
 import { useUiStore } from "@/lib/store/ui";
 import { IconRail } from "./IconRail";
 import { TopBar } from "./TopBar";
@@ -31,6 +32,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const chrome = chromeForPath(pathname);
   const promoVisible = useUiStore((s) => s.promoVisible);
   const setPendingSearchFocus = useUiStore((s) => s.setPendingSearchFocus);
+  useSystemThemeSync();
 
   // Ctrl+K: focus whichever search box the page has (transcript find in a notebook, else the top bar)
   // Ctrl+J: AskFred. Registered here so they work on every page, not only those with the top bar.

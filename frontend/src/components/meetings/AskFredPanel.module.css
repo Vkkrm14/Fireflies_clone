@@ -134,7 +134,7 @@
 }
 
 .sparkle {
-  color: #7be0b0;
+  color: var(--success);
   margin-bottom: 14px;
 }
 

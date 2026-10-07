@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Bot, ChartColumn, House, Layers, ListChecks, Settings, Sparkles, UserPlus, Video, Zap, type LucideIcon,
+  Bot, ChartColumn, House, Layers, ListChecks, PanelLeftClose, PanelLeftOpen, Settings, Sparkles, UserPlus, Video, Zap,
+  type LucideIcon,
 } from "lucide-react";
+import { useSidebar } from "@/lib/hooks/useSidebar";
 import { ROUTES } from "@/lib/routes";
 import { FireflyMark } from "./FireflyMark";
 import styles from "./IconRail.module.css";
@@ -15,6 +17,7 @@ interface RailItem {
   icon: LucideIcon;
   match: (pathname: string) => boolean;
   hint?: string;
+  badge?: boolean;
 }
 
 const startsWith = (prefix: string) => (p: string) => p.startsWith(prefix);
@@ -31,6 +34,7 @@ const MAIN: RailItem[] = [
 const INSIGHTS: RailItem[] = [
   { href: ROUTES.analytics, label: "Analytics", icon: ChartColumn, match: startsWith("/analytics") },
   { href: ROUTES.agents, label: "Voice Agents", icon: Bot, match: startsWith("/agents") },
+  { href: ROUTES.upgrade, label: "What's new", icon: Zap, match: startsWith("/upgrade"), badge: true },
 ];
 const BOTTOM: RailItem[] = [
   { href: ROUTES.team, label: "Team", icon: UserPlus, match: startsWith("/team") },
@@ -40,45 +44,63 @@ const BOTTOM: RailItem[] = [
 
 function RailLink({ item, pathname }: { item: RailItem; pathname: string }) {
   const Icon = item.icon;
-  const active = item.match(pathname);
   return (
     <Link
       href={item.href}
       className={styles.item}
-      aria-current={active ? "page" : undefined}
+      aria-current={item.match(pathname) ? "page" : undefined}
       aria-label={item.label}
       title={item.hint ? `${item.label} (${item.hint})` : item.label}
     >
       <Icon size={18} aria-hidden />
+      <span className={styles.label}>{item.label}</span>
+      {item.badge ? <span className={styles.dot} /> : null}
     </Link>
   );
 }
 
+/**
+ * Side navigation. Labels are always in the DOM; the `data-rail` attribute on <html> (set before first paint,
+ * see lib/sidebar.ts) decides whether they show, so expanding never depends on React state at load time.
+ */
 export function IconRail() {
   const pathname = usePathname();
+  const [expanded, toggle] = useSidebar();
+
   return (
-    <aside className={styles.rail}>
-      <Link href={ROUTES.home} className={styles.logo} aria-label="Fireflies home">
-        <FireflyMark />
-      </Link>
-      <nav className={styles.nav} aria-label="Main">
-        <div className={styles.group}>
-          {TOP.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
-        </div>
-        <div className={styles.group}>
-          {MAIN.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
-        </div>
-        <div className={styles.group}>
-          {INSIGHTS.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
-          <Link href={ROUTES.upgrade} className={styles.item} aria-label="What's new" title="What's new">
-            <Zap size={18} aria-hidden />
-            <span className={styles.dot} />
+    <div className={styles.slot}>
+      <aside className={styles.rail} aria-label="Primary">
+        <div className={styles.head}>
+          <Link href={ROUTES.home} className={styles.logo} aria-label="Fireflies home">
+            <FireflyMark />
+            <span className={styles.brand}>Fireflies.ai</span>
           </Link>
+          <button
+            type="button"
+            className={styles.toggle}
+            onClick={toggle}
+            aria-expanded={expanded}
+            aria-label={expanded ? "Collapse sidebar" : "Expand sidebar"}
+            title={expanded ? "Collapse sidebar" : "Expand sidebar"}
+          >
+            {expanded ? <PanelLeftClose size={17} aria-hidden /> : <PanelLeftOpen size={17} aria-hidden />}
+          </button>
         </div>
-      </nav>
-      <div className={styles.bottom}>
-        {BOTTOM.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
-      </div>
-    </aside>
+        <nav className={styles.nav} aria-label="Main">
+          <div className={styles.group}>
+            {TOP.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
+          </div>
+          <div className={styles.group}>
+            {MAIN.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
+          </div>
+          <div className={styles.group}>
+            {INSIGHTS.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
+          </div>
+        </nav>
+        <div className={styles.bottom}>
+          {BOTTOM.map((item) => <RailLink key={item.href} item={item} pathname={pathname} />)}
+        </div>
+      </aside>
+    </div>
   );
 }

@@ -14,7 +14,7 @@ Speech-to-text and live-call bots are out of scope, so meetings come from seeded
 - **Interactive transcript:** click a line to seek the player, and the transcript highlights and scrolls as the audio plays. Find-in-transcript with next and previous.
 - **Summary and notes:** overview, key topics, chapters that jump to their timestamp, and editable action items.
 - **Meeting management:** create, rename, edit participants and date, delete; everything persists in SQLite.
-- **Bonus:** global search grouped by meeting, comments and soundbites, tags, export to txt, md or json, extractive "ask about this meeting", and keyboard shortcuts.
+- **Bonus:** global search grouped by meeting, comments and soundbites, tags, export to txt, md or json, extractive "ask about this meeting", keyboard shortcuts, an expandable side navigation (icons only or with labels, remembered per browser), and a light, dark or system theme (Settings → Language & Appearance).
 
 ## Tech stack
 
@@ -138,7 +138,7 @@ Backend tests run against a throwaway database, never `fireflies.db`. `tests/tes
 
 **Core:** meetings library with search, sort, filters and participant filter; meeting detail with speaker-labelled transcript, a player whose seek bar, play state and transcript highlight stay in sync (click a line or a chapter to jump); find-in-transcript with next/previous; summary, key topics, chapters and action items; create (paste or upload `.txt`, `.vtt`, `.json`), edit, rename and delete meetings; add, edit, tick off and delete action items; toasts, modals, notifications menu, settings and "Coming soon" placeholders.
 
-**Bonus:** global search, export (txt / md / json), tags with filtering, transcript comments, soundbites, ask-about-this-meeting (extractive), keyboard shortcuts (`Ctrl+K` search, `Ctrl+J` AskFred, `Space` play and pause). The app is dark, as Fireflies is.
+**Bonus:** global search, export (txt / md / json), tags with filtering, transcript comments, soundbites, ask-about-this-meeting (extractive), keyboard shortcuts (`Ctrl+K` search, `Ctrl+J` AskFred, `Space` play and pause). Dark is the default, as in Fireflies; the light theme uses Fireflies' own grey and purple scales and is chosen under Settings → Language & Appearance. The choice is saved in the browser and applied before first paint, so there is no flash.
 
 ## Assumptions and limits
 

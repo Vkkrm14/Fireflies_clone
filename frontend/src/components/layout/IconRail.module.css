@@ -1,24 +1,67 @@
+/* Collapsed (icons only) is the default; html[data-rail="expanded"] widens the rail and reveals the labels. */
+.slot {
+  width: 100%;
+  min-width: 0;
+}
+
 .rail {
   position: sticky;
   top: 0;
   align-self: start;
   height: calc(100dvh - var(--promo-h));
-  width: var(--rail-w);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 12px 0;
   gap: 8px;
-  background: var(--bg-page);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--bg-base);
   border-right: 1px solid var(--border);
 }
 
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 32px;
+  min-width: 32px;
+  justify-content: center;
+}
+
+.brand {
+  display: none;
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--text-strong);
+  white-space: nowrap;
+}
+
+.toggle {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  margin-bottom: 4px;
+  width: 28px;
+  height: 28px;
+  color: var(--text-hint);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.toggle:hover {
+  color: var(--text-strong);
+  background: var(--bg-strong);
 }
 
 .nav {
@@ -48,6 +91,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
   align-items: center;
 }
 
@@ -72,6 +116,12 @@
   color: var(--text-strong);
 }
 
+.label {
+  display: none;
+  white-space: nowrap;
+  font-size: var(--fs-base);
+}
+
 .dot {
   position: absolute;
   top: 7px;
@@ -80,4 +130,65 @@
   height: 6px;
   border-radius: 50%;
   background: var(--success);
+}
+
+/* Expanded */
+:global(html[data-rail="expanded"]) .rail {
+  align-items: stretch;
+  padding: 12px 8px;
+}
+
+:global(html[data-rail="expanded"]) .head {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+:global(html[data-rail="expanded"]) .logo {
+  justify-content: flex-start;
+}
+
+:global(html[data-rail="expanded"]) .brand,
+:global(html[data-rail="expanded"]) .label {
+  display: inline;
+}
+
+:global(html[data-rail="expanded"]) .nav,
+:global(html[data-rail="expanded"]) .group,
+:global(html[data-rail="expanded"]) .bottom {
+  align-items: stretch;
+}
+
+:global(html[data-rail="expanded"]) .item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 0 10px;
+}
+
+:global(html[data-rail="expanded"]) .dot {
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+/* Phones and small tablets: the content keeps a 56px column and an expanded rail floats over it */
+@media (max-width: 900px) {
+  .slot {
+    position: relative;
+  }
+
+  .rail {
+    position: fixed;
+    top: var(--promo-h);
+    left: 0;
+    z-index: 60;
+    width: var(--rail-w);
+  }
+
+  :global(html[data-rail="expanded"]) .rail {
+    box-shadow: var(--shadow-lg);
+  }
 }
