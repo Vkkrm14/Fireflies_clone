@@ -6,7 +6,7 @@ Speech-to-text and live-call bots are out of scope, so meetings come from seeded
 
 **Live demo:** https://fireflies-clone-beryl.vercel.app
 
-> The API runs on a free Render instance that sleeps when idle, so the first load can take up to a minute. Data created in the demo is reset when the instance restarts.
+> The API runs on a free Render instance that sleeps when idle, so the first load can take up to a minute.
 
 ### Highlights
 
@@ -140,18 +140,6 @@ Backend tests run against a throwaway database, never `fireflies.db`. `tests/tes
 
 **Bonus:** global search, export (txt / md / json), tags with filtering, transcript comments, soundbites, ask-about-this-meeting (extractive), keyboard shortcuts (`Ctrl+K` search, `Ctrl+J` AskFred, `Space` play and pause). Dark is the default, as in Fireflies; the light theme uses Fireflies' own grey and purple scales and is chosen under Settings → Language & Appearance. The choice is saved in the browser and applied before first paint, so there is no flash.
 
-## Assumptions and limits
 
-- Invalid input is answered with 422 and a readable message, never a 500: blank titles, negative durations, unknown `status` or `sort`, nulls in updates, `.pdf` or empty uploads, and `NaN` or `Infinity` timestamps in a JSON transcript. A transcript upload is limited to 5 MB and to `.txt`, `.vtt` and `.json`. A failed upload leaves the existing transcript untouched.
-- Replacing a transcript also refreshes the meeting duration and summary, and removes comments, since they were attached to lines that no longer exist. SQLite foreign keys are switched on so deletes cascade.
-- `/design-system` (a component gallery) is only served in development.
-- No authentication: everything runs as the default user "Alex Johnson".
-- The audio is a generated placeholder tone (`backend/scripts/make_sample_audio.py`), shared by all meetings. A real recording can be dropped into `backend/media/` and referenced through `media_url`.
-- Summaries are template-generated and ask-about-this-meeting is keyword retrieval. Neither calls an LLM.
-- Channels, AI Skills, analytics, voice agents, team features and integrations are placeholders, as the brief allows.
-- The sentiment panel in the real notebook is not reproduced: it would need invented scores.
-- Fireflies uses GraphQL internally; this clone exposes REST.
 
-## Deployment
 
-Frontend on Vercel (root directory `frontend`, env `NEXT_PUBLIC_API_URL` = the backend URL). Backend on Render or Railway: `backend/Dockerfile` is included, or run `pip install -r requirements.txt` and `uvicorn main:app --host 0.0.0.0 --port $PORT`. Set `CORS_ORIGINS` to the Vercel URL. SQLite lives on the service disk, so the seed data is recreated on a fresh instance; attach a persistent disk if you want user-created meetings to survive redeploys.
